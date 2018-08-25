@@ -20,7 +20,7 @@ var ref = db.ref("users/");
 
 let doFirstPromise = new Promise((resolve, reject) => {
   ref.on("child_added",function(snapshot) {
-    console.log(snapshot.val().notification);
+    // console.log(snapshot.val().notification);
     somePushTokens.push(snapshot.val().notification);
     resolve();
   });
@@ -28,7 +28,7 @@ let doFirstPromise = new Promise((resolve, reject) => {
 doFirstPromise.then(()=>{
   for (let pushToken of somePushTokens) {
     // Each push token looks like ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]
-    console.log(pushToken);
+    // console.log(pushToken);
     // Check that all your push tokens appear to be valid Expo push tokens
     if (!Expo.isExpoPushToken(pushToken)) {
       console.error(`Push token ${pushToken} is not a valid Expo push token`);
